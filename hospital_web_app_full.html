@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>3 Air Force Hospital</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <style>
+    body {
+      background-color: #e0f7fa; /* Sky blue */
+      padding-top: 80px;
+    }
+
+    .scrolling-text {
+      white-space: nowrap;
+      overflow: hidden;
+      animation: scroll-left 15s linear infinite;
+    }
+
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    .accordion-item {
+      background-color: white;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .accordion-button {
+      background-color: #bbdefb;
+      font-weight: bold;
+    }
+
+    .accordion-body {
+      background-color: #ffffff;
+    }
+
+    .logo {
+      width: 240px;
+      margin-bottom: 60px;
+    }
+  </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="70" tabindex="0">
+
+  <!-- Navbar -->
+  <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">3 AFH</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#welcome">Home</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#contactsModal">
+              <i class="bi bi-telephone-forward-fill"></i> Contacts
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Moving Banner -->
+  <div class="container-fluid bg-danger text-white py-2 mt-5">
+    <div class="scrolling-text text-center fw-bold">
+      🩸 Upcoming Event: Blood Donation Camp on 30 May 2025 | Time: 09:00 AM – 01:00 PM | Venue: Burns Ward
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container mt-4">
+    <!-- Welcome Section -->
+    <section id="welcome" class="text-center mb-5">
+      <img src="logo.png" alt="Hospital Logo" class="logo" />
+      <h1>Welcome to 3 Air Force Hospital</h1>
+             
+    </section>
+
+    <!-- Accordion Sections -->
+    <div class="accordion" id="hospitalAccordion">
+      <!-- OPD -->
+      <div class="accordion-item" id="opd">
+        <h2 class="accordion-header" id="headingOPD">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOPD">
+            <i class="bi bi-calendar2-check me-2"></i> OPD Schedule
+          </button>
+        </h2>
+        <div id="collapseOPD" class="accordion-collapse collapse">
+          <div class="accordion-body">
+            Monday–Friday: 09:00 AM – 01:00 PM<br />
+            Specialists available: Surgery, Medicine
+          </div>
+        </div>
+      </div>
+
+      <!-- Immunization -->
+      <div class="accordion-item" id="immunization">
+        <h2 class="accordion-header" id="headingImm">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseImm">
+            <i class="bi bi-capsule-pill me-2"></i> Immunization Info
+          </button>
+        </h2>
+        <div id="collapseImm" class="accordion-collapse collapse">
+          <div class="accordion-body">
+            Every Wednesday: 09:00 AM – 12:00 PM<br />
+            As per Govt of India Universal Immunization Programme
+          </div>
+        </div>
+      </div>
+
+      <!-- Dental -->
+      <div class="accordion-item" id="dental">
+        <h2 class="accordion-header" id="headingDental">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDental">
+            <i class="bi bi-emoji-smile me-2"></i> Dental Clinic
+          </button>
+        </h2>
+        <div id="collapseDental" class="accordion-collapse collapse">
+          <div class="accordion-body">
+            <p><strong>Timing:</strong> Tuesday & Friday – 03:00 PM to 05:00 PM</p>
+            <p><strong>Services:</strong></p>
+            <ul>
+              <li>Dental Checkup & Cleaning</li>
+              <li>Fillings & Extractions</li>
+              <li>Minor Oral Surgeries</li>
+              <li>Oral Hygiene Counseling</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Swasth Sangini -->
+      <div class="accordion-item" id="swasth">
+        <h2 class="accordion-header" id="headingSwasth">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSwasth">
+            <i class="bi bi-gender-female me-2"></i> Swasth Sangini Campaign
+          </button>
+        </h2>
+        <div id="collapseSwasth" class="accordion-collapse collapse">
+          <div class="accordion-body">
+            Empowering women for preventive healthcare through awareness, screening & lifestyle education.<br />
+            Join our upcoming sessions as we intimate you in Sangini platforms
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for Important Contacts -->
+  <div class="modal fade" id="contactsModal" tabindex="-1" aria-labelledby="contactsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title" id="contactsModalLabel">Important Contacts</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul class="list-group">
+            <li class="list-group-item"><strong>Commanding Officer:</strong> +91-8356994690</li>
+            <li class="list-group-item"><strong>Medical Specialist:</strong> +91-7798728068</li>
+            <li class="list-group-item"><strong>DMA:</strong> +91-8965925991</li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
