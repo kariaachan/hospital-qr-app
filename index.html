@@ -18,9 +18,14 @@
     }
 
     .scrolling-text {
-      white-space: nowrap;
-      overflow: hidden;
-      animation: scroll-left 15s linear infinite;
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll-left 15s linear infinite;
+  font-size: 18px;
+  padding: 0 10px;
+  min-width: 100%;
+}
+
     }
 
     @keyframes scroll-left {
@@ -86,9 +91,9 @@
     </div>
   </nav>
 
-  <!-- Moving Banner -->
-  <div class="container-fluid bg-danger text-white py-2 mt-5">
-    <div class="scrolling-text text-center fw-bold">
+  <!-- Scrolling Banner -->
+<div class="container-fluid bg-danger text-white py-2 mt-5 overflow-hidden">
+  <div class="scrolling-text text-center fw-bold">
       🩸 Upcoming Event: Blood Donation Camp on 30 May 2025 | Time: 09:00 AM – 01:00 PM | Venue: Burns Ward
     </div>
   </div>
