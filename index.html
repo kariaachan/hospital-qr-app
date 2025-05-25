@@ -30,6 +30,14 @@
       100% {
         transform: translateX(-100%);
       }
+        @media (max-width: 576px) {
+    .scrolling-text {
+      font-size: 14px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+
     }
 
     .accordion-item {
@@ -47,10 +55,13 @@
       background-color: #ffffff;
     }
 
-    .logo {
-      width: 240px;
-      margin-bottom: 60px;
-    }
+    
+      .logo {
+  width: 100px;
+  max-width: 80%;
+  margin-bottom: 20px;
+}
+
   </style>
 </head>
 <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="70" tabindex="0">
@@ -85,7 +96,7 @@
   <!-- Main Content -->
   <div class="container mt-4">
     <!-- Welcome Section -->
-    <section id="welcome" class="text-center mb-5">
+    <section id="welcome" class="text-center mb-5 px-3">
       <img src="logo.png" alt="Hospital Logo" class="logo" />
       <h1>Welcome to 3 Air Force Hospital</h1>
              
