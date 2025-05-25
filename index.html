@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,89 +8,57 @@
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-
-  <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
 
   <style>
     body {
-      background-color: #e0f7fa; /* Sky blue */
+      background-color: #e0f7fa;
       padding-top: 80px;
+      background-image: url("watermark.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 40%;
+      background-attachment: fixed;
+      opacity: 0.95;
     }
 
     .scrolling-text {
-  display: inline-block;
-  white-space: nowrap;
-  padding-left: 100%;
-  animation: scroll-left 15s linear infinite;
-  font-size: 18px;
-}
-
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-@media (max-width: 576px) {
-  .scrolling-text {
-    font-size: 14px;
-  }
-}
-
-
+      display: inline-block;
+      white-space: nowrap;
+      padding-left: 100%;
+      animation: scroll-left 15s linear infinite;
+      font-size: 18px;
     }
 
-    .accordion-item {
-      background-color: white;
-      border-radius: 8px;
-      margin-bottom: 15px;
+    @keyframes scroll-left {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-100%); }
     }
 
-    .accordion-button {
-      background-color: #bbdefb;
-      font-weight: bold;
+    .logo {
+      width: 120px;
+      margin-bottom: 20px;
+      animation: rotateLogo 8s linear forwards;
     }
 
-    .accordion-body {
-      background-color: #ffffff;
+    @keyframes rotateLogo {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
-
-    
-      .logo {
-  width: 120px;
-  margin-bottom: 20px;
-  animation: rotateLogo 8s linear forwards
-}
-
-@keyframes rotateLogo {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-}
-
   </style>
 </head>
-<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="70" tabindex="0">
+<body>
 
   <!-- Navbar -->
-  <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">3 AFH</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="logo.png" alt="Logo" style="height: 40px; margin-right: 10px;" />
+        <span class="fs-6 fw-bold d-none d-sm-inline">Welcome to 3 Air Force Hospital</span>
+      </a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#welcome">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#content">Home</a></li>
           <li class="nav-item">
             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#contactsModal">
               <i class="bi bi-telephone-forward-fill"></i> Contacts
@@ -101,128 +70,97 @@
   </nav>
 
   <!-- Scrolling Banner -->
-<div class="container-fluid bg-danger text-white py-2 mt-5 overflow-hidden">
-  <div class="scrolling-text fw-bold">
-    🩸 Upcoming Event: Blood Donation Camp on 30 May 2025 | Time: 09:00 AM – 01:00 PM | Venue: Family Wing
-  </div>
-</div>
-
-
-  <!-- Main Content -->
-  <div class="container mt-4">
-    <!-- Welcome Section -->
-    <section id="welcome" class="text-center mb-5 px-3">
-      <img src="logo.png" alt="Hospital Logo" class="logo" />
-      <h1>Welcome to 3 Air Force Hospital</h1>
-             
-    </section>
-
-    <!-- Accordion Sections -->
-    <div class="accordion" id="hospitalAccordion">
-      <!-- OPD -->
-      <div class="accordion-item" id="opd">
-        <h2 class="accordion-header" id="headingOPD">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOPD">
-            <i class="bi bi-calendar2-check me-2"></i> OPD Schedule
-          </button>
-        </h2>
-        <div id="collapseOPD" class="accordion-collapse collapse">
-          <div class="accordion-body">
-            Monday–Friday: 09:00 AM – 01:00 PM<br />
-            Specialists available: Surgery, Medicine
-          </div>
-        </div>
-      </div>
-
-      <!-- Immunization -->
-      <div class="accordion-item" id="immunization">
-        <h2 class="accordion-header" id="headingImm">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseImm">
-            <i class="bi bi-capsule-pill me-2"></i> Immunization Info
-          </button>
-        </h2>
-        <div id="collapseImm" class="accordion-collapse collapse">
-          <div class="accordion-body">
-            Every Wednesday: 09:00 AM – 12:00 PM<br />
-            As per Govt of India Universal Immunization Programme
-          </div>
-        </div>
-      </div>
-
-      <!-- Dental -->
-      <div class="accordion-item" id="dental">
-        <h2 class="accordion-header" id="headingDental">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDental">
-            <i class="bi bi-emoji-smile me-2"></i> Dental Clinic
-          </button>
-        </h2>
-        <div id="collapseDental" class="accordion-collapse collapse">
-          <div class="accordion-body">
-            <p><strong>Timing:</strong> Tuesday & Friday – 03:00 PM to 05:00 PM</p>
-            <p><strong>Services:</strong></p>
-            <ul>
-              <li>Dental Checkup & Cleaning</li>
-              <li>Fillings & Extractions</li>
-              <li>Minor Oral Surgeries</li>
-              <li>Oral Hygiene Counseling</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Swasth Sangini -->
-      <div class="accordion-item" id="swasth">
-        <h2 class="accordion-header" id="headingSwasth">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSwasth">
-            <i class="bi bi-gender-female me-2"></i> Swasth Sangini Campaign
-          </button>
-        </h2>
-        <div id="collapseSwasth" class="accordion-collapse collapse">
-          <div class="accordion-body">
-            Empowering women for preventive healthcare through awareness, screening & lifestyle education.<br />
-            Join our upcoming sessions as we intimate you in Sangini platforms
-          </div>
-        </div>
-      </div>
-      <!-- Feedback Section -->
-<div class="accordion-item" id="feedback">
-  <h2 class="accordion-header" id="headingFeedback">
-    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFeedback">
-      <i class="bi bi-chat-dots me-2"></i> Feedback Form
-    </button>
-  </h2>
-  <div id="collapseFeedback" class="accordion-collapse collapse">
-    <div class="accordion-body">
-      <form id="feedbackForm">
-        <div class="mb-3">
-          <label for="name" class="form-label">Name (optional)</label>
-          <input type="text" class="form-control" id="name" placeholder="Your name">
-        </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">Email (optional)</label>
-          <input type="email" class="form-control" id="email" placeholder="you@example.com">
-        </div>
-        <div class="mb-3">
-          <label for="type" class="form-label">Type of Feedback</label>
-          <select class="form-select" id="type">
-            <option value="suggestion">Suggestion</option>
-            <option value="complaint">Complaint</option>
-            <option value="compliment">Compliment</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label for="message" class="form-label">Your Feedback</label>
-          <textarea class="form-control" id="message" rows="4" placeholder="Write your feedback here..."></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary w-100">Submit</button>
-      </form>
+  <div class="container-fluid bg-danger text-white py-2 overflow-hidden">
+    <div class="scrolling-text fw-bold">
+      🩸 Upcoming Event: Blood Donation Camp on 30 May 2025 | Time: 09:00 AM – 01:00 PM | Venue: Family Wing
     </div>
   </div>
-</div>
 
-    
+  <!-- Left-Aligned List with Collapsible Sections -->
+  <div class="container mt-4" id="content" style="max-width: 25%; margin-left: 0; margin-right: auto;">
+    <div class="list-group">
 
-  <!-- Modal for Important Contacts -->
+      <a class="list-group-item list-group-item-action" data-bs-toggle="collapse" href="#opdInfo">
+        📅 OPD Schedule
+      </a>
+      <div class="collapse" id="opdInfo">
+        <div class="p-3 border border-top-0">
+          Monday–Friday: 09:00 AM – 01:00 PM<br />
+          Specialists available: Surgery, Medicine
+        </div>
+      </div>
+
+      <a class="list-group-item list-group-item-action" data-bs-toggle="collapse" href="#immInfo">
+        💉 Immunization Info
+      </a>
+      <div class="collapse" id="immInfo">
+        <div class="p-3 border border-top-0">
+          Every Wednesday: 09:00 AM – 12:00 PM<br />
+          As per Govt of India Universal Immunization Programme
+        </div>
+      </div>
+
+      <a class="list-group-item list-group-item-action" data-bs-toggle="collapse" href="#dentalInfo">
+        🦷 Dental Clinic
+      </a>
+      <div class="collapse" id="dentalInfo">
+        <div class="p-3 border border-top-0">
+          <strong>Timing:</strong> Tuesday & Friday – 03:00 PM to 05:00 PM<br />
+          <strong>Services:</strong>
+          <ul>
+            <li>Dental Checkup & Cleaning</li>
+            <li>Fillings & Extractions</li>
+            <li>Minor Oral Surgeries</li>
+            <li>Oral Hygiene Counseling</li>
+          </ul>
+        </div>
+      </div>
+
+      <a class="list-group-item list-group-item-action" data-bs-toggle="collapse" href="#swasthInfo">
+        ♀️ Swasth Sangini Campaign
+      </a>
+      <div class="collapse" id="swasthInfo">
+        <div class="p-3 border border-top-0">
+          Empowering women for preventive healthcare through awareness, screening & lifestyle education.<br />
+          Join our upcoming sessions as we intimate you in Sangini platforms.
+        </div>
+      </div>
+
+      <a class="list-group-item list-group-item-action" data-bs-toggle="collapse" href="#feedbackFormBox">
+        💬 Feedback Form
+      </a>
+      <div class="collapse" id="feedbackFormBox">
+        <div class="p-3 border border-top-0">
+          <form id="feedbackForm">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name (optional)</label>
+              <input type="text" class="form-control" id="name" placeholder="Your name">
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email (optional)</label>
+              <input type="email" class="form-control" id="email" placeholder="you@example.com">
+            </div>
+            <div class="mb-3">
+              <label for="type" class="form-label">Type of Feedback</label>
+              <select class="form-select" id="type">
+                <option value="suggestion">Suggestion</option>
+                <option value="complaint">Complaint</option>
+                <option value="compliment">Compliment</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Your Feedback</label>
+              <textarea class="form-control" id="message" rows="4" placeholder="Write your feedback here..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Submit</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Contacts Modal -->
   <div class="modal fade" id="contactsModal" tabindex="-1" aria-labelledby="contactsModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -235,45 +173,40 @@
             <li class="list-group-item"><strong>Commanding Officer:</strong> +91-8356994690</li>
             <li class="list-group-item"><strong>Medical Specialist:</strong> +91-7798728068</li>
             <li class="list-group-item"><strong>DMA:</strong> +91-8965925991</li>
-            
           </ul>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Bootstrap JS -->
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-  document.getElementById("feedbackForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+    document.getElementById("feedbackForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const url = "https://script.google.com/macros/s/AKfycbxL3m6yR8dbpKjEBb8Vg1Fwvrft0FUf6b662GHfzPCUH4zB4Sf51fvJuWzIuq4OMGwuuQ/exec";
+      const data = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        type: document.getElementById("type").value,
+        message: document.getElementById("message").value
+      };
 
-    const url = "https://script.google.com/macros/s/AKfycbxL3m6yR8dbpKjEBb8Vg1Fwvrft0FUf6b662GHfzPCUH4zB4Sf51fvJuWzIuq4OMGwuuQ/exec"; // Replace this with your Apps Script Web App URL
-
-    const data = {
-      name: document.getElementById("name").value,
-      email: document.getElementById("email").value,
-      type: document.getElementById("type").value,
-      message: document.getElementById("message").value
-    };
-
-    fetch(url, {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    }).then(() => {
-      alert("Thank you! Your feedback has been submitted.");
-      document.getElementById("feedbackForm").reset();
-    }).catch((error) => {
-      alert("Error submitting feedback.");
-      console.error("Error:", error);
+      fetch(url, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      }).then(() => {
+        alert("Thank you! Your feedback has been submitted.");
+        document.getElementById("feedbackForm").reset();
+      }).catch((error) => {
+        alert("Error submitting feedback.");
+        console.error("Error:", error);
+      });
     });
-  });
-</script>
-
-
+  </script>
 </body>
 </html>
