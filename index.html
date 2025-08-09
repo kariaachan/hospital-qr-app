@@ -1,224 +1,232 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>3 Air Force Hospital</title>
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
-
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    body {
-      background-color: #e0f7fa;
-      padding-top: 80px;
-      background-image: url("watermark.png");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 40%;
-      background-attachment: fixed;
-      opacity: 0.95;
+    :root { --brand:#0b5ed7; --brand-2:#0a4cb3; }
+    .navbar-brand img{ height:44px; }
+    .hero{
+      background: linear-gradient(180deg, rgba(11,94,215,.08), rgba(11,94,215,.02));
     }
-
-    .scrolling-text {
-      display: inline-block;
-      white-space: nowrap;
-      padding-left: 100%;
-      animation: scroll-left 15s linear infinite;
-      font-size: 18px;
-    }
-
-    @keyframes scroll-left {
-      0% { transform: translateX(0%); }
-      100% { transform: translateX(-100%); }
-    }
-
-    .logo {
-      width: 120px;
-      margin-bottom: 20px;
-      animation: rotateLogo 8s linear forwards;
-    }
-
-    @keyframes rotateLogo {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
+    .quick-tile{ border-radius:1rem; transition:transform .2s, box-shadow .2s; }
+    .quick-tile:hover{ transform:translateY(-3px); box-shadow:0 0.75rem 1.25rem rgba(0,0,0,.08); }
+    .section-title{ font-weight:700; }
+    .watermark{ opacity:.08; position:fixed; inset:auto 0 12px 0; text-align:center; font-size:3rem; pointer-events:none;}
+    footer a{ text-decoration:none; }
+    /* make marquee-like notice accessible & responsive */
+    .notice{ background:#fff; border:1px dashed var(--brand); border-radius:.75rem; }
   </style>
 </head>
 <body>
-
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-    <div class="container-fluid">
+  <nav class="navbar navbar-expand-lg bg-white sticky-top border-bottom">
+    <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="#">
-        <img src="logo.png" alt="Logo" style="height: 40px; margin-right: 10px;" />
-        <span class="fs-6 fw-bold d-none d-sm-inline">Welcome to 3 AFH</span>
+        <img src="logo.png" alt="3 AFH logo" class="me-2">
+        <span class="fw-bold">3 Air Force Hospital</span>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-</button>
-
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#content">Home</a></li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#contactsModal">
-              <i class="bi bi-telephone-forward-fill"></i> Contacts
-            </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="mainNav" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#departments">Departments</a></li>
+          <li class="nav-item"><a class="nav-link" href="#doctors">Doctors</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacts">Contacts</a></li>
+          <li class="nav-item ms-lg-3">
+            <a class="btn btn-primary" href="#appointments">Book Appointment</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Scrolling Banner -->
-  <div class="container-fluid bg-danger text-white py-2 overflow-hidden">
-    <div class="scrolling-text fw-bold">
-      🩸 Upcoming Event: Medical Camp for Women & Children at Nimjhiri Village on 13 Aug 2025 | Time: 10:30 AM onwards
-    </div>
-  </div>
-
-  <!-- Left-Aligned List with Collapsible Sections -->
-  <div class="container mt-4">
-  <div class="row">
-    <div class="col-12 col-sm-10 col-md-6 col-lg-4">
-      <!-- Place your list-group here -->
-    </div>
-  </div>
-</div>
-
-    <div class="list-group">
-
-      <a class="list-group-item list-group-item-action" data-bs-toggle="collapse" href="#opdInfo">
-        📅 OPD Schedule
-      </a>
-      <div class="collapse" id="opdInfo">
-        <div class="p-3 border border-top-0">
-          Monday–Friday: 09:00 AM – 01:00 PM<br />
-          Specialists available: Surgery, Medicine
+  <!-- Hero -->
+  <header class="hero py-5" id="home">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+          <h1 class="display-5 fw-bold">Care with Discipline & Compassion</h1>
+          <p class="lead text-muted">OPD, Immunization, Dental, and community outreach at 3 AFH.</p>
+          <div class="d-flex gap-2">
+            <a class="btn btn-primary btn-lg" href="#opd">View OPD Timings</a>
+            <a class="btn btn-outline-primary btn-lg" href="#feedback">Give Feedback</a>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <!-- Notice card (replaces marquee) -->
+          <div class="notice p-4 bg-white">
+            <div class="small text-uppercase text-primary fw-semibold mb-1">Upcoming Event</div>
+            <div class="fw-semibold">Medical Camp for Women & Children</div>
+            <div class="text-muted">Nimjhiri Village — 13 Aug 2025, 10:30 AM onwards</div>
+          </div>
         </div>
       </div>
+    </div>
+  </header>
 
-      <a class="list-group-item list-group-item-action" data-bs-toggle="collapse" href="#immInfo">
-        💉 Immunization Info
-      </a>
-      <div class="collapse" id="immInfo">
-        <div class="p-3 border border-top-0">
-          Every Wednesday: 09:00 AM – 12:00 PM<br />
-          As per Govt of India Universal Immunization Programme
+  <!-- Quick actions -->
+  <section class="py-4">
+    <div class="container">
+      <div class="row g-3">
+        <div class="col-6 col-md-3">
+          <a class="d-block p-4 bg-white border quick-tile h-100" href="#doctors">
+            <div class="fw-semibold">Find a Doctor</div>
+            <div class="small text-muted">Browse specialties</div>
+          </a>
+        </div>
+        <div class="col-6 col-md-3">
+          <a class="d-block p-4 bg-white border quick-tile h-100" href="#appointments">
+            <div class="fw-semibold">Book Appointment</div>
+            <div class="small text-muted">Coming soon</div>
+          </a>
+        </div>
+        <div class="col-6 col-md-3">
+          <a class="d-block p-4 bg-white border quick-tile h-100" href="#opd">
+            <div class="fw-semibold">OPD Schedule</div>
+            <div class="small text-muted">Timings & units</div>
+          </a>
+        </div>
+        <div class="col-6 col-md-3">
+          <a class="d-block p-4 bg-white border quick-tile h-100" href="#contacts">
+            <div class="fw-semibold">Emergency</div>
+            <div class="small text-muted">Call CO / DMA</div>
+          </a>
         </div>
       </div>
+    </div>
+  </section>
 
-      <a class="list-group-item list-group-item-action" data-bs-toggle="collapse" href="#dentalInfo">
-        🦷 Dental Clinic
-      </a>
-      <div class="collapse" id="dentalInfo">
-        <div class="p-3 border border-top-0">
-          <strong>Timing:</strong> Tuesday & Friday – 03:00 PM to 05:00 PM<br />
-          <strong>Services:</strong>
-          <ul>
-            <li>Dental Checkup & Cleaning</li>
-            <li>Fillings & Extractions</li>
-            <li>Minor Oral Surgeries</li>
-            <li>Oral Hygiene Counseling</li>
+  <!-- Your existing cards, re-housed -->
+  <main class="py-5">
+    <div class="container">
+      <div class="row g-4">
+        <!-- OPD -->
+        <div class="col-md-6" id="opd">
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="h5 section-title mb-3">OPD Schedule</h2>
+              <p class="mb-1"><strong>Mon–Fri:</strong> 09:00 AM – 01:00 PM</p>
+              <p class="mb-0"><strong>Specialists:</strong> Surgery, Medicine</p>
+            </div>
+          </div>
+        </div>
+        <!-- Immunization -->
+        <div class="col-md-6" id="immunization">
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="h5 section-title mb-3">Immunization Info</h2>
+              <p class="mb-1"><strong>Every Wednesday:</strong> 09:00 AM – 12:00 PM</p>
+              <p class="mb-0">As per Govt of India UIP</p>
+            </div>
+          </div>
+        </div>
+        <!-- Dental -->
+        <div class="col-md-6" id="dental">
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="h5 section-title mb-3">Dental Clinic</h2>
+              <p class="mb-1"><strong>Tue & Fri:</strong> 03:00 PM – 05:00 PM</p>
+              <ul class="mb-0">
+                <li>Dental Checkup & Cleaning</li>
+                <li>Fillings & Extractions</li>
+                <li>Minor Oral Surgeries</li>
+                <li>Oral Hygiene Counseling</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Swasth Sangini -->
+        <div class="col-md-6" id="sangini">
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="h5 section-title mb-2">Swasth Sangini Campaign</h2>
+              <p class="mb-0">Empowering women through awareness, screening & lifestyle education. Join upcoming sessions via Sangini platforms.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Feedback -->
+        <div class="col-12" id="feedback">
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="h5 section-title mb-3">Feedback Form</h2>
+              <form class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">Name (optional)</label>
+                  <input class="form-control" type="text">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Email (optional)</label>
+                  <input class="form-control" type="email">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Type of Feedback</label>
+                  <select class="form-select">
+                    <option>Suggestion</option>
+                    <option>Complaint</option>
+                    <option>Compliment</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <label class="form-label">Your Feedback</label>
+                  <textarea class="form-control" rows="4"></textarea>
+                </div>
+                <div class="col-12">
+                  <button class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contacts -->
+        <div class="col-12" id="contacts">
+          <div class="card">
+            <div class="card-body">
+              <h2 class="h5 section-title mb-3">Important Contacts</h2>
+              <ul class="list-unstyled mb-0">
+                <li><strong>Commanding Officer:</strong> +91-8356994690</li>
+                <li><strong>Medical Specialist:</strong> +91-7798728068</li>
+                <li><strong>DMA:</strong> +91-8965925991</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-4 border-top">
+    <div class="container">
+      <div class="row small">
+        <div class="col-md">
+          <div class="fw-semibold mb-1">3 Air Force Hospital</div>
+          <div>Station Health Organization • Amla</div>
+        </div>
+        <div class="col-md">
+          <div class="fw-semibold mb-1">Quick Links</div>
+          <ul class="list-unstyled mb-0">
+            <li><a href="#opd">OPD Schedule</a></li>
+            <li><a href="#immunization">Immunization</a></li>
+            <li><a href="#dental">Dental</a></li>
           </ul>
         </div>
-      </div>
-
-      <a class="list-group-item list-group-item-action" data-bs-toggle="collapse" href="#swasthInfo">
-        ♀️ Swasth Sangini Campaign
-      </a>
-      <div class="collapse" id="swasthInfo">
-        <div class="p-3 border border-top-0">
-          Empowering women for preventive healthcare through awareness, screening & lifestyle education.<br />
-          Join our upcoming sessions as we intimate you in Sangini platforms.
-        </div>
-      </div>
-
-      <a class="list-group-item list-group-item-action" data-bs-toggle="collapse" href="#feedbackFormBox">
-        💬 Feedback Form
-      </a>
-      <div class="collapse" id="feedbackFormBox">
-        <div class="p-3 border border-top-0">
-          <form id="feedbackForm">
-            <div class="mb-3">
-              <label for="name" class="form-label">Name (optional)</label>
-              <input type="text" class="form-control" id="name" placeholder="Your name">
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Email (optional)</label>
-              <input type="email" class="form-control" id="email" placeholder="you@example.com">
-            </div>
-            <div class="mb-3">
-              <label for="type" class="form-label">Type of Feedback</label>
-              <select class="form-select" id="type">
-                <option value="suggestion">Suggestion</option>
-                <option value="complaint">Complaint</option>
-                <option value="compliment">Compliment</option>
-              </select>
-            </div>
-            <div class="mb-3">
-              <label for="message" class="form-label">Your Feedback</label>
-              <textarea class="form-control" id="message" rows="4" placeholder="Write your feedback here..."></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Submit</button>
-          </form>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Contacts Modal -->
-  <div class="modal fade" id="contactsModal" tabindex="-1" aria-labelledby="contactsModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title" id="contactsModalLabel">Important Contacts</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <ul class="list-group">
-            <li class="list-group-item"><strong>Commanding Officer:</strong> +91-8356994690</li>
-            <li class="list-group-item"><strong>Medical Specialist:</strong> +91-7798728068</li>
-            <li class="list-group-item"><strong>DMA:</strong> +91-8965925991</li>
-          </ul>
+        <div class="col-md">
+          <div class="fw-semibold mb-1">Reach Us</div>
+          <div>Emergency: See Contacts</div>
         </div>
       </div>
     </div>
-  </div>
+  </footer>
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    document.getElementById("feedbackForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const url = "https://script.google.com/macros/s/AKfycbxL3m6yR8dbpKjEBb8Vg1Fwvrft0FUf6b662GHfzPCUH4zB4Sf51fvJuWzIuq4OMGwuuQ/exec";
-      const data = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        type: document.getElementById("type").value,
-        message: document.getElementById("message").value
-      };
+  <div class="watermark">3 AFH</div>
 
-      fetch(url, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-      }).then(() => {
-        alert("Thank you! Your feedback has been submitted.");
-        document.getElementById("feedbackForm").reset();
-      }).catch((error) => {
-        alert("Error submitting feedback.");
-        console.error("Error:", error);
-      });
-    });
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
