@@ -27,6 +27,7 @@
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
       background-color:#fff;
       margin:0;
+      scroll-behavior: smooth;
     }
 
     /* ===== Watermark Div ===== */
@@ -39,7 +40,7 @@
       pointer-events: none;
       z-index: 0;
     }
-    header, main, footer, nav { position: relative; z-index: 1; }
+    header, main, footer, nav, section { position: relative; z-index: 1; }
 
     /* Navbar */
     .navbar{ background-color:var(--brand-primary) !important; }
@@ -56,7 +57,6 @@
     .hero{ background-color:var(--brand-bg-cream); }
 
     /* Quick tiles */
-    
     .quick-tile{
       border-radius:1rem; background:#fff; transition:transform .2s, box-shadow .2s;
     }
@@ -74,10 +74,18 @@
     footer{ background:var(--brand-dark); color:#fff; }
     footer a{ color:var(--brand-gold); text-decoration:none; }
     footer a:hover{ text-decoration:underline; }
+
+    /* Emergency Floating Button */
+    .fab-emergency{
+      position: fixed; right:16px; bottom:16px; width:58px; height:58px;
+      border-radius:50%; background:#C13B33; color:#fff; text-decoration:none;
+      box-shadow:0 8px 18px rgba(0,0,0,.2); z-index:9999;
+      display:flex; align-items:center; justify-content:center; font-size:24px;
+    }
   </style>
 </head>
 <body>
-  
+
   <!-- Watermark Layer -->
   <div class="page-watermark" aria-hidden="true"></div>
 
@@ -88,7 +96,7 @@
         <img src="./crest-3afh.png" alt="3 AFH Crest" class="me-2" style="height:48px;width:auto;object-fit:contain;">
         <span class="fw-bold fs-5">3 Air Force Hospital</span>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div id="mainNav" class="collapse navbar-collapse">
@@ -96,6 +104,7 @@
           <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="#departments">Departments</a></li>
           <li class="nav-item"><a class="nav-link" href="#doctors">Doctors</a></li>
+          <li class="nav-item"><a class="nav-link" href="#opd">OPD</a></li>
           <li class="nav-item"><a class="nav-link" href="#contacts">Contacts</a></li>
           <li class="nav-item ms-lg-3"><a class="btn btn-primary" href="#appointments">Book Appointment</a></li>
         </ul>
@@ -116,7 +125,7 @@
           </p>
           <div class="d-flex gap-2">
             <a class="btn btn-primary btn-lg" href="#opd">View OPD Timings</a>
-            <a class="btn btn-outline-primary btn-lg" style="border-color:var(--brand-primary);color:var(--brand-primary)" href="#feedback">Give Feedback</a>
+            <a class="btn btn-outline-primary btn-lg" style="border-color:var(--brand-primary);color:var(--brand-primary)" href="#appointments">Book Online</a>
           </div>
         </div>
         <div class="col-lg-5">
@@ -143,7 +152,7 @@
         <div class="col-6 col-md-3">
           <a class="d-block p-4 border quick-tile h-100" href="#appointments">
             <div class="fw-semibold" style="color:var(--brand-primary)">Book Appointment</div>
-            <div class="small text-muted">Coming soon</div>
+            <div class="small text-muted">Google Form (temp)</div>
           </a>
         </div>
         <div class="col-6 col-md-3">
@@ -162,6 +171,100 @@
     </div>
   </section>
 
+  <!-- ===== DEPARTMENTS (simple grid) ===== -->
+  <section id="departments" class="py-5">
+    <div class="container">
+      <h2 class="h4 section-title mb-4">Departments</h2>
+      <div class="row g-3">
+        <div class="col-6 col-md-3"><div class="card h-100"><div class="card-body"><strong>Surgery</strong><br><span class="text-muted small">General & Minor OT</span></div></div></div>
+        <div class="col-6 col-md-3"><div class="card h-100"><div class="card-body"><strong>Medicine</strong><br><span class="text-muted small">General Medicine</span></div></div></div>
+        <div class="col-6 col-md-3"><div class="card h-100"><div class="card-body"><strong>Dental</strong><br><span class="text-muted small">Dental Hygienist</span></div></div></div>
+        <div class="col-6 col-md-3"><div class="card h-100"><div class="card-body"><strong>Obs/Gyn</strong><br><span class="text-muted small">Fortnightly Visit starting soon</span></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FIND A DOCTOR ===== -->
+  <section id="doctors" class="py-5">
+    <div class="container">
+      <h2 class="h4 section-title mb-4">Find a Doctor</h2>
+
+      <div class="row g-3 align-items-end mb-3">
+        <div class="col-md-6">
+          <label class="form-label">Search by name</label>
+          <input id="docSearch" type="text" class="form-control" placeholder="Type a name...">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Filter by specialty</label>
+          <select id="docFilter" class="form-select">
+            <option value="">All specialties</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="docList" class="row g-3"></div>
+    </div>
+  </section>
+
+  <!-- ===== OPD SCHEDULE ===== -->
+  <section id="opd" class="py-5">
+    <div class="container">
+      <h2 class="h4 section-title mb-4">OPD Schedule</h2>
+      <div class="table-responsive">
+        <table class="table align-middle">
+          <thead>
+            <tr>
+              <th>Department</th>
+              <th>Doctor</th>
+              <th>Days</th>
+              <th>Timings</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Surgery</td><td>Wg Cdr Vinil Elenjickal</td><td>Mon–Fri</td><td>10:00–13:00</td></tr>
+            <tr><td>Medicine</td><td>Maj Ankur Pratap Singh</td><td>Mon-Fri</td><td>09:00–13:00</td></tr>
+            <tr><td>MO</td><td>Flt Lt Tausif Arbaz</td><td>Mon-Fri</td><td>08:00–13:00</td></tr>
+            <tr><td>MO</td><td>Flt Lt Shivalika Sati</td><td>Mon-Fri</td><td>08:00–13:00</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== APPOINTMENTS (Google Form) ===== -->
+  <section id="appointments" class="py-5">
+    <div class="container">
+      <h2 class="h4 section-title mb-3">Book Appointment</h2>
+      <p class="text-muted mb-3">Use the form below to request an appointment. We’ll confirm by phone.</p>
+      <a class="btn btn-primary" href="YOUR_GOOGLE_FORM_LINK" target="_blank" rel="noopener">Open Appointment Form</a>
+    </div>
+  </section>
+
+  <!-- ===== CONTACTS ===== -->
+  <section id="contacts" class="py-5">
+    <div class="container">
+      <h2 class="h4 section-title mb-4">Important Contacts</h2>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="card h-100"><div class="card-body">
+            <ul class="list-unstyled mb-0">
+              <li><strong>Commanding Officer:</strong> <a href="tel:+918356994690">+91-8356994690</a></li>
+              <li><strong>Medical Specialist:</strong> <a href="tel:+917798728068">+91-7798728068</a></li>
+              <li><strong>DMA:</strong> <a href="tel:+918965925991">+91-8965925991</a></li>
+            </ul>
+          </div></div>
+        </div>
+        <div class="col-md-6">
+          <div class="card h-100"><div class="card-body">
+            <div class="small text-uppercase fw-semibold mb-2" style="color:var(--brand-primary)">Location</div>
+            <div>3 Air Force Hospital, Amla</div>
+            <div class="text-muted small">Station Health Organization</div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== FOOTER ===== -->
   <footer class="py-4">
     <div class="container">
@@ -174,18 +277,71 @@
           <div class="fw-semibold mb-1">Quick Links</div>
           <ul class="list-unstyled mb-0">
             <li><a href="#opd">OPD Schedule</a></li>
-            <li><a href="#immunization">Immunization</a></li>
-            <li><a href="#dental">Dental</a></li>
+            <li><a href="#appointments">Appointments</a></li>
+            <li><a href="#doctors">Find a Doctor</a></li>
           </ul>
         </div>
         <div class="col-md">
           <div class="fw-semibold mb-1">Reach Us</div>
-          <div>Emergency: See Contacts</div>
+          <div>Emergency: <a href="tel:+918965925991">Call DMA</a></div>
         </div>
       </div>
     </div>
   </footer>
 
+  <!-- Emergency Floating Call Button -->
+  <a href="tel:+918965925991" class="fab-emergency" aria-label="Emergency Call DMA">☎</a>
+
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- ===== Doctors Directory JS ===== -->
+  <script>
+    // --- Simple doctor data (edit freely) ---
+    const DOCTORS = [
+      { name: "Wg Cdr Vinil Elenjickal", specialty: "Surgery",     days:"Mon–Fri",     time:"10:00–13:00" },
+      { name: "Maj Ankur Pratap Singh",             specialty: "Medicine",    days:"Mon-Fri", time:"09:00–13:00" },
+      { name: "Flt Lt Tausif Arbaz",            specialty: "MO",      days:"Mon-Fri",     time:"08:00–13:00" },
+      { name: "Flt Lt Shivalika Sati",             specialty: "MO", days:"Mon-Fri",         time:"08:00–13:00" },
+    ];
+
+    const docList = document.getElementById('docList');
+    const docSearch = document.getElementById('docSearch');
+    const docFilter = document.getElementById('docFilter');
+
+    // Populate specialty filter
+    [...new Set(DOCTORS.map(d => d.specialty))].sort().forEach(sp => {
+      const opt = document.createElement('option');
+      opt.value = sp; opt.textContent = sp;
+      docFilter.appendChild(opt);
+    });
+
+    function renderDoctors() {
+      const q = (docSearch.value || '').toLowerCase();
+      const sp = docFilter.value;
+      const filtered = DOCTORS.filter(d =>
+        (!sp || d.specialty === sp) &&
+        (d.name.toLowerCase().includes(q))
+      );
+
+      docList.innerHTML = filtered.map(d => `
+        <div class="col-md-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="d-flex justify-content-between">
+                <h3 class="h6 mb-1">${d.name}</h3>
+                <span class="badge text-bg-light" style="border:1px solid #ddd">${d.specialty}</span>
+              </div>
+              <div class="small text-muted">Available: ${d.days} • ${d.time}</div>
+            </div>
+          </div>
+        </div>
+      `).join('') || `<div class="text-muted">No doctors match your search.</div>`;
+    }
+
+    docSearch.addEventListener('input', renderDoctors);
+    docFilter.addEventListener('change', renderDoctors);
+    renderDoctors();
+  </script>
 </body>
 </html>
